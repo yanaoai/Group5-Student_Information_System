@@ -24,11 +24,11 @@ This Python-based system with a relational database backend is designed to:
 
 We adopted **TDD (Test-Driven Development)**:
 
-- Daily stand-ups
-- Iterative development on feature branches
-- Tests written *before* implementation
-- Continuous integration via pull requests into `develop`
-- Final stable build merged into `main`
+- Write tests first
+- Run tests → should fail (red)
+- Implement minimal logic
+- Run tests → pass (green)
+- Refactor → keep tests green
 
 ---
 
@@ -36,10 +36,11 @@ We adopted **TDD (Test-Driven Development)**:
 
 ### 🔹 Main branches
 
-| Branch    | Purpose                               |
-| --------- | ------------------------------------- |
-| `main`    | Stable release/demo version (protected) |
-| `develop` | Main development branch (protected; all feature PRs merged here) |
+| Branch     | Purpose                               |
+| ---------  | ------------------------------------- |
+| `main`     | Stable release/demo version (protected) |
+| `develop`  | Main development branch (protected; all feature PRs merged here) |
+| `feature/*`| Individual feature branches |
 
 ### 🔹 Feature Branch Strategy
 
@@ -57,17 +58,19 @@ feature-database
 
 All PRs must:
 
+- Auther Info (Student ID)
+
 - Have at least one code review
 
-- Pass automated tests
+- Pass tests
 
 - Include a clear description of changes
 
-- Avoid direct push to main or develop
+- No direct push to 'main' or 'develop'
 
 ---
 
-## 4. Branch Protection Rules (GitHub)
+## 4. Branch Protection Rules
 
 Settings for main and develop:
 
@@ -77,24 +80,16 @@ Settings for main and develop:
 
 - Require linear history
 
-- Require conversation resolution before merging
-
 - Do not allow bypassing protection
-
-Ensures TDD compliance and code quality.
 
 ---
 
-## 5. Test-Driven Development (TDD)
+## 5. Setup & Run
 
-Workflow:
-
-- Write tests first
-
-- Run tests → should fail (red)
-
-- Implement minimal logic
-
-- Run tests → pass (green)
-
-- Refactor → keep tests green
+```bash
+git clone https://github.com/yanaoai/Group5-Student_Information_System.git
+cd Group5-Student_Information_System
+pip install -r requirements.txt
+pytest   # run tests
+python SIS_run.py   # run system
+```
